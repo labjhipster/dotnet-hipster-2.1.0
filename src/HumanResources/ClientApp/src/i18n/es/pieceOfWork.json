@@ -1,0 +1,24 @@
+{
+  "humanResourcesApp": {
+    "pieceOfWork": {
+      "home": {
+        "title": "Piece Of Works",
+        "createLabel": "Crear nuevo Piece Of Work",
+        "createOrEditLabel": "Crear o editar Piece Of Work",
+        "notFound": "Ningún Piece Of Works encontrado"
+      },
+      "created": "Un nuevo Piece Of Work ha sido creado con el identificador {{ param }}",
+      "updated": "Un Piece Of Work ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Piece Of Work ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Piece Of Work {{ id }}?"
+      },
+      "detail": {
+        "title": "Piece Of Work"
+      },
+      "title": "Title",
+      "description": "Description",
+      "job": "Job"
+    }
+  }
+}

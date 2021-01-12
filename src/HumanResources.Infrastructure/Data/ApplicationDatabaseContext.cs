@@ -1,9 +1,11 @@
 using HumanResources.Domain;
 using HumanResources.Domain.Interfaces;
+using HumanResources.Crosscutting.Enums;
 using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -26,6 +28,15 @@ namespace HumanResources.Infrastructure.Data
         {
             _httpContextAccessor = httpContextAccessor;
         }
+
+        public DbSet<Region> Regions { get; set; }
+        public DbSet<Country> Countries { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<PieceOfWork> PieceOfWorks { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Job> Jobs { get; set; }
+        public DbSet<JobHistory> JobHistories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -61,6 +72,18 @@ namespace HumanResources.Infrastructure.Data
                 .HasForeignKey(e => e.UserId)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<Job>()
+                .HasMany(x => x.Chores)
+                .WithMany(x => x.Jobs)
+                .UsingEntity<Dictionary<string, object>>(
+                    "JobChores",
+                    x => x.HasOne<PieceOfWork>().WithMany(),
+                    x => x.HasOne<Job>().WithMany());
+
+            builder.Entity<JobHistory>()
+                .Property(e => e.Language)
+                .HasConversion<string>();
         }
 
         /// <summary>
