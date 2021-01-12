@@ -1,0 +1,6 @@
+version: '2'
+services:
+  humanresources-app:
+    image: humanresources
+    ports:
+      - 80:80

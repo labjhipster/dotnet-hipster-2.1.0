@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <RootNamespace>HumanResources.Infrastructure</RootNamespace>
+        <OutputType>Library</OutputType>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection"  />
+        <PackageReference Include="Serilog"  />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore"  />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite"  />
+        <PackageReference Include="Microsoft.EntityFrameworkCore"  />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools"  />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\HumanResources.Domain\HumanResources.Domain.csproj" />
+        <ProjectReference Include="..\HumanResources.Dto\HumanResources.Dto.csproj" />
+        <ProjectReference Include="..\HumanResources.Crosscutting\HumanResources.Crosscutting.csproj" />
+    </ItemGroup>
+
+</Project>
